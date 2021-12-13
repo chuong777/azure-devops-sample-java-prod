@@ -41,7 +41,7 @@ public class AppTest {
     // request timeout duration in your testing library so that
     // it doesn't interrupt while the device is being initialized.
     String app = System.getenv("KOBITON_SESSION_APPLICATION") != null ? System.getenv("KOBITON_SESSION_APPLICATION") : "kobiton-store:91041";
-    capabilities.setCapability("app", System.getenv("KOBITON_SESSION_APPLICATION"));
+    capabilities.setCapability("app", app);
 
     capabilities.setCapability("deviceGroup", "KOBITON");
     // For deviceName, platformVersion Kobiton supports wildcard
