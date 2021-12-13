@@ -55,6 +55,8 @@ public class AppTest {
     capabilities.setCapability("deviceName", deviceName);
     capabilities.setCapability("platformVersion", platformVersion);
     capabilities.setCapability("platformName", platformName);
+	  
+    System.out.println("capabilities: ", capabilities);
 
     url = new URL(kobitonServerUrl);
 
