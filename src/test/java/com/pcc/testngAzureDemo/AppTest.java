@@ -61,6 +61,8 @@ public class AppTest {
 
     url = new URL(kobitonServerUrl);
 
+    System.out.println(kobitonServerUrl);
+
     driver = new AndroidDriver<MobileElement>(url, capabilities);
     String kobitonSessionId = driver.getSessionDetails().get("kobitonSessionId").toString();
     System.out.println("kobitonSessionId: " + kobitonSessionId);
