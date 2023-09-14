@@ -24,12 +24,12 @@ public class AppTest {
   @BeforeSuite
   public void setupAppium() throws MalformedURLException {
     //Run test on Kobiton
-	  
-	  
-    //The generated session will be visible to you only. 
+
+
+    //The generated session will be visible to you only.
     String kobitonServerUrl = "https://" + System.getenv("KOBITON_USERNAME") + ":" + System.getenv("KOBITON_API_KEY") + "@api.kobiton.com/wd/hub";
     DesiredCapabilities capabilities = new DesiredCapabilities();
-    // The generated session will be visible to you only. 
+    // The generated session will be visible to you only.
     capabilities.setCapability("sessionName", "PMO test");
     capabilities.setCapability("sessionDescription", "abc");
     capabilities.setCapability("deviceOrientation", "portrait");
@@ -47,37 +47,39 @@ public class AppTest {
     // For deviceName, platformVersion Kobiton supports wildcard
     // character *, with 3 formats: *text, text* and *text*
     // If there is no *, Kobiton will match the exact text provided
-    
+
     String deviceName = System.getenv("KOBITON_DEVICE_NAME") != null ? System.getenv("KOBITON_DEVICE_NAME") : "Galaxy*";
     String platformVersion = System.getenv("KOBITON_SESSION_PLATFORM_VERSION") != null ? System.getenv("KOBITON_SESSION_PLATFORM_VERSION") : "6*";
     String platformName = System.getenv("KOBITON_DEVICE_PLATFORM_NAME") != null ? System.getenv("KOBITON_DEVICE_PLATFORM_NAME") : "android";
-    
+
     capabilities.setCapability("deviceName", deviceName);
     capabilities.setCapability("platformVersion", platformVersion);
     capabilities.setCapability("platformName", platformName);
-	  
+    capabilities.setCapability("kobiton:scriptlessEnable", true);
+
     System.out.println(capabilities);
 
     url = new URL(kobitonServerUrl);
 
     driver = new AndroidDriver<MobileElement>(url, capabilities);
+    String kobitonSessionId = driver.getSessionDetails().get("kobitonSessionId").toString();
+    System.out.println("kobitonSessionId: " + kobitonSessionId);
     driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
   }
 
   @AfterSuite
   public void uninstallApp() throws InterruptedException {
   System.out.println("After Suite");
-    driver.removeApp("io.appium.android.apis" );
-    String kobitonSessionId = driver.getSessionDetails().get("kobitonSessionId").toString();
-    System.out.println("kobitonSessionId: " + kobitonSessionId);
+//    driver.removeApp("io.appium.android.apis" );
     driver.quit();
   }
 
   @Test (enabled=true) public void myFirstTest() throws InterruptedException {
     System.out.println("First Test");
-    Thread.sleep(5000);
+//    Thread.sleep(5000);
     System.out.println("1");
     System.out.println("2");
-    driver.resetApp();
+    driver.findElement(By.xpath("//*[@resource-id='android:id/text1']")).click();
+//    driver.resetApp();
   }
 }
