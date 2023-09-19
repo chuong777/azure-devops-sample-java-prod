@@ -4,6 +4,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.BeforeSuite;
@@ -62,27 +65,29 @@ public class AppTest {
 
     url = new URL(kobitonServerUrl);
 
-    System.out.println(kobitonServerUrl);
-
     driver = new AndroidDriver<MobileElement>(url, capabilities);
     String kobitonSessionId = driver.getSessionDetails().get("kobitonSessionId").toString();
     System.out.println("kobitonSessionId: " + kobitonSessionId);
-    driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
   }
 
   @AfterSuite
-  public void uninstallApp() throws InterruptedException {
-  System.out.println("After Suite");
-//    driver.removeApp("io.appium.android.apis" );
+  public void quitAppium() throws InterruptedException {
+    System.out.println("After Suite");
     driver.quit();
   }
 
   @Test (enabled=true) public void myFirstTest() throws InterruptedException {
-    System.out.println("First Test");
-//    Thread.sleep(5000);
-    System.out.println("1");
-    System.out.println("2");
-    driver.findElement(By.xpath("//*[@resource-id='android:id/text1']")).click();
-//    driver.resetApp();
+    driver.findElement(MobileBy.AccessibilityId("Views")).click();
+
+    driver.findElement(MobileBy.AccessibilityId("Auto Complete")).click();
+
+    driver.findElement(MobileBy.AccessibilityId("1. Screen Top")).click();
+
+    driver.findElement(MobileBy.xpath("//*[@resource-id='io.appium.android.apis:id/edit']")).sendKeys("Kobiton");
+
+    driver.pressKey(new KeyEvent(AndroidKey.BACK));
+
+    driver.pressKey(new KeyEvent(AndroidKey.BACK));
   }
 }
