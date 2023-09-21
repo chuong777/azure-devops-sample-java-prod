@@ -78,7 +78,8 @@ public class AppTest {
   }
 
   @Test (enabled=true) public void myFirstTest() throws InterruptedException {
-    driver.findElement(MobileBy.AccessibilityId("Views")).click();
+    driver.findElement(MobileBy.xpath("//*[@resource-id='com.examplecrash.itatest98:id/button_first2']")).click();
+//    driver.findElement(MobileBy.AccessibilityId("Views")).click();
 
 //    driver.findElement(MobileBy.AccessibilityId("Auto Complete")).click();
 //
