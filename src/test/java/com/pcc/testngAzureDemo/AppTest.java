@@ -47,7 +47,7 @@ public class AppTest {
     String app = System.getenv("KOBITON_SESSION_APPLICATION") != null ? System.getenv("KOBITON_SESSION_APPLICATION") : "kobiton-store:91041";
     capabilities.setCapability("app", app);
 
-    capabilities.setCapability("deviceGroup", "KOBITON");
+    capabilities.setCapability("deviceGroup", "ORGANIZATION");
     // For deviceName, platformVersion Kobiton supports wildcard
     // character *, with 3 formats: *text, text* and *text*
     // If there is no *, Kobiton will match the exact text provided
