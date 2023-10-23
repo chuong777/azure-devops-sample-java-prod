@@ -31,7 +31,7 @@ public class AppTest {
 
     //The generated session will be visible to you only.
 //    String kobitonServerUrl = "https://" + System.getenv("KOBITON_USERNAME") + ":" + System.getenv("KOBITON_API_KEY") + "@api-prod-blue.kobiton.com/wd/hub";
-    String kobitonServerUrl = "https://" + System.getenv("KOBITON_USERNAME") + ":" + System.getenv("KOBITON_API_KEY") + "@api.kobiton.com/wd/hub";
+    String kobitonServerUrl = "https://" + System.getenv("KOBITON_USERNAME") + ":" + System.getenv("KOBITON_API_KEY") + "@api-test.kobiton.com/wd/hub";
     DesiredCapabilities capabilities = new DesiredCapabilities();
     // The generated session will be visible to you only.
     capabilities.setCapability("sessionName", "PMO test");
@@ -79,17 +79,17 @@ public class AppTest {
   }
 
   @Test (enabled=true) public void myFirstTest() throws InterruptedException {
-//    driver.findElement(MobileBy.xpath("//*[@resource-id='com.examplecrash.itatest98:id/button_first2']")).click();
-    driver.findElement(MobileBy.AccessibilityId("Views")).click();
-
-    driver.findElement(MobileBy.AccessibilityId("Auto Complete")).click();
-
-    driver.findElement(MobileBy.AccessibilityId("1. Screen Top")).click();
-
-    driver.findElement(MobileBy.xpath("//*[@resource-id='io.appium.android.apis:id/edit']")).sendKeys("Kobiton");
-
-    driver.pressKey(new KeyEvent(AndroidKey.BACK));
-
-    driver.pressKey(new KeyEvent(AndroidKey.BACK));
+    driver.findElement(MobileBy.xpath("//*[@resource-id='com.examplecrash.itatest98:id/button_first2']")).click();
+//    driver.findElement(MobileBy.AccessibilityId("Views")).click();
+//
+//    driver.findElement(MobileBy.AccessibilityId("Auto Complete")).click();
+//
+//    driver.findElement(MobileBy.AccessibilityId("1. Screen Top")).click();
+//
+//    driver.findElement(MobileBy.xpath("//*[@resource-id='io.appium.android.apis:id/edit']")).sendKeys("Kobiton");
+//
+//    driver.pressKey(new KeyEvent(AndroidKey.BACK));
+//
+//    driver.pressKey(new KeyEvent(AndroidKey.BACK));
   }
 }
